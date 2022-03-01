@@ -3,7 +3,86 @@ module.exports = {
   name: "breakpoint",
   content: {
     card_header: "<h3>Break Points</h3>",
-    card_body: `
+    card_body: {
+      p1: {
+        type: "paragraph",
+        content:
+          "Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.",
+      },
+
+      p2: {
+        type: "paragraph",
+        content: "Bootstrap have six default breakpoints",
+      },
+
+      t1: {
+        type: "table",
+        content: `
+        <thead>
+            <tr>
+              <th>Breakpoint</th>
+              <th>Class</th>
+              <th>Dimensions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>X-Small</td>
+              <td><em>None</em></td>
+              <td>&lt;576px</td>
+            </tr>
+            <tr>
+              <td>Small</td>
+              <td><code>sm</code></td>
+              <td>≥576px</td>
+            </tr>
+            <tr>
+              <td>Medium</td>
+              <td><code>md</code></td>
+              <td>≥768px</td>
+            </tr>
+            <tr>
+              <td>Large</td>
+              <td><code>lg</code></td>
+              <td>≥992px</td>
+            </tr>
+            <tr>
+              <td>Extra large</td>
+              <td><code>xl</code></td>
+              <td>≥1200px</td>
+            </tr>
+            <tr>
+              <td>Extra extra large</td>
+              <td><code>xxl</code></td>
+              <td>≥1400px</td>
+            </tr>
+          </tbody>
+        `
+      },
+      c1:{
+        type:"code",
+        content:`
+        <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            Column
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            Column
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            Column
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre>
+        `
+      }
+    },
+  },
+};
+
+/*
+`
     <p>
           Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.
           </p>
@@ -67,11 +146,10 @@ module.exports = {
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre>
     `,
-  },
-};
+*/
 
 },{}],2:[function(require,module,exports){
-let content_breakpoint = require("./card_content/breakpoint_content");
+let breakpoint_content = require("./card_content/breakpoint_content");
 
 const card_template = document.querySelector("#cardtemplate");
 const main_content_area = document.querySelector("#maincontent");
@@ -86,19 +164,18 @@ for (let i = 0; i < 1; i++) {
     code_container_template.content.cloneNode(true).children[0];
 
   let new_card_header = new_card.querySelector("[card-header]");
-  new_card_header.setAttribute("data-bs-target", `#${content_breakpoint.name}`)
+  new_card_header.setAttribute("data-bs-target", `#${breakpoint_content.name}`);
   let new_card_body = new_card.querySelector("[card-body]");
-  new_card_body.setAttribute("id", content_breakpoint.name)
-  let code_container_body = code_container.querySelector ("[code-content]")
+  new_card_body.setAttribute("id", breakpoint_content.name);
+  let code_container_body = code_container.querySelector("[code-content]");
 
-
-  new_card_header.innerHTML = content_breakpoint.content.card_header;
+  new_card_header.innerHTML = breakpoint_content.content.card_header;
   // new_card_body.innerHTML =
-    // content_breakpoint.card_body;
+  // breakpoint_content.card_body;
 
-    code_container_body.innerHTML = content_breakpoint.content.code_block
+  code_container_body.innerHTML = breakpoint_content.content.code_block;
 
-    new_card_body.appendChild(code_container)
+  new_card_body.appendChild(code_container);
 
   main_content_area.appendChild(new_card);
 }

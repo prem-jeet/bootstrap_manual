@@ -1,0 +1,58 @@
+:root{
+    --table-background: #f8f9fa;
+}
+
+.main-header{
+    background-color: #fb8500;
+}
+
+.main-header div[logo]{
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: floralwhite;
+}
+
+.card{
+    max-width: 500px;
+}
+
+.card-body.alert{
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.card-body table{
+    background-color: var(--table-background);
+}
+
+.card-body{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+*[data-bs-toggle="collapse"]{
+    cursor: pointer;
+}
+
+/* formatting for code elements */
+.highlight{
+    background-color: #f8f9fa;
+    padding: 0.5rem;
+    padding-bottom: 0;
+}
+.p{
+    color: #212529;
+}
+.nt{
+    color: #2f6f9f;
+}
+.na{
+    color: #006ee0;
+}
+.o{
+    color: #555;
+}
+.s{
+    color: #d73038;
+}

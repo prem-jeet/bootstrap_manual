@@ -1,0 +1,30 @@
+{
+  "name": "bootstrap_manual",
+  "version": "1.0.0",
+  "description": "A beginner friendly Bootstrap Doc.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build",
+    "browserify": "browserify js/index.js > dist/js/main.js",
+    "clean:dist": "rimraf dist/*",
+    "make:dist": "mkdirp dist/style dist/js",
+    "onchange:js" : "onchange 'js/**/*.js' -i -k -d 2000 -v -- npm run browserify",
+    "build": "npm run clean:dist && npm run make:dist && npm run onchange:js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prem-jeet/bootstrap_manual.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prem-jeet/bootstrap_manual/issues"
+  },
+  "homepage": "https://github.com/prem-jeet/bootstrap_manual#readme",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "mkdirp": "^1.0.4",
+    "onchange": "^7.1.0",
+    "rimraf": "^3.0.2"
+  }
+}

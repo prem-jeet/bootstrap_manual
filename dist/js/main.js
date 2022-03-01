@@ -1,7 +1,9 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 module.exports = {
-  card_header: "<h3>Break Points</h3>",
-  card_body: `
+  name: "breakpoint",
+  content: {
+    card_header: "<h3>Break Points</h3>",
+    card_body: `
     <p>
           Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.
           </p>
@@ -51,49 +53,54 @@ module.exports = {
         </table>
     `,
     code_block: `
-    <div class="highlight"><pre tabindex="0" class="highlight"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-          Column
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-          Column
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-          Column
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+        Column
       <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
-    `
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+        Column
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+        Column
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre>
+    `,
+  },
 };
 
 },{}],2:[function(require,module,exports){
 let content_breakpoint = require("./card_content/breakpoint_content");
 
+const card_template = document.querySelector("#cardtemplate");
+const main_content_area = document.querySelector("#maincontent");
+const code_container_template = document.querySelector(
+  "#codecontainertemplate"
+);
+
+for (let i = 0; i < 1; i++) {
+  let new_card = card_template.content.cloneNode(true).children[0];
+
+  let code_container =
+    code_container_template.content.cloneNode(true).children[0];
+
+  let new_card_header = new_card.querySelector("[card-header]");
+  new_card_header.setAttribute("data-bs-target", `#${content_breakpoint.name}`)
+  let new_card_body = new_card.querySelector("[card-body]");
+  new_card_body.setAttribute("id", content_breakpoint.name)
+  let code_container_body = code_container.querySelector ("[code-content]")
 
 
+  new_card_header.innerHTML = content_breakpoint.content.card_header;
+  // new_card_body.innerHTML =
+    // content_breakpoint.card_body;
 
+    code_container_body.innerHTML = content_breakpoint.content.code_block
 
+    new_card_body.appendChild(code_container)
 
-
-const card_template = document.querySelector("#cardtemplate")
-const main_content_area = document.querySelector("#maincontent")
-
-for(let i=0 ;i <3; i++){
-  let new_card = card_template.content.cloneNode(true).children[0]
-
-let new_card_header = new_card.querySelector("[card-header]")
-let new_card_body = new_card.querySelector("[card-body]")
-
-new_card_header.innerHTML = content_breakpoint.card_header;
-new_card_body.innerHTML = content_breakpoint.card_body + content_breakpoint.code_block;
-
-main_content_area.appendChild(new_card)
+  main_content_area.appendChild(new_card);
 }
-
-
-
-
-
 
 },{"./card_content/breakpoint_content":1}]},{},[2]);

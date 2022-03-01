@@ -1,4 +1,3 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 module.exports = {
   card_header: "<h3>Break Points</h3>",
   card_body: `
@@ -66,34 +65,3 @@ module.exports = {
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
     `
 };
-
-},{}],2:[function(require,module,exports){
-let content_breakpoint = require("./card_content/breakpoint_content");
-
-
-
-
-
-
-
-const card_template = document.querySelector("#cardtemplate")
-const main_content_area = document.querySelector("#maincontent")
-
-for(let i=0 ;i <3; i++){
-  let new_card = card_template.content.cloneNode(true).children[0]
-
-let new_card_header = new_card.querySelector("[card-header]")
-let new_card_body = new_card.querySelector("[card-body]")
-
-new_card_header.innerHTML = content_breakpoint.card_header;
-new_card_body.innerHTML = content_breakpoint.card_body + content_breakpoint.code_block;
-
-main_content_area.appendChild(new_card)
-}
-
-
-
-
-
-
-},{"./card_content/breakpoint_content":1}]},{},[2]);

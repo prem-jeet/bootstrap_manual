@@ -14,7 +14,8 @@
 }
 
 .card{
-    max-width: 500px;
+    flex-basis: 500px;
+    flex-grow: 0;
 }
 
 .card-body.alert{
@@ -27,13 +28,19 @@
 }
 
 .card-body{
-    max-height: 400px;
+    height: 400px;
     overflow-y: scroll;
 }
 
 *[data-bs-toggle="collapse"]{
     cursor: pointer;
 }
+
+#maincontent{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 
 /* formatting for code elements */
 .highlight{

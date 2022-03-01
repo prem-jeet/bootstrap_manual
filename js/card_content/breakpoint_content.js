@@ -58,6 +58,7 @@ module.exports = {
           </tbody>
         `
       },
+      
       c1:{
         type:"code",
         content:`

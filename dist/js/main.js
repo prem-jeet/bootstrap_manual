@@ -59,6 +59,7 @@ module.exports = {
           </tbody>
         `
       },
+      
       c1:{
         type:"code",
         content:`
@@ -149,8 +150,66 @@ module.exports = {
 */
 
 },{}],2:[function(require,module,exports){
+module.exports = {
+  // create card
+  create_card: () => {
+      return card_template.content.cloneNode(true).children[0]
+  },
+  // if content type == title
+  create_title: () => {
+    return title_template.content.cloneNode(true).children[0];
+  },
+  // if content type == paragraph
+  create_paragraph: () => {
+    return paragraph_template.content.cloneNode(true).children[0];
+  },
+  // if content type == code
+  create_code: () => {
+    return code_template.content.cloneNode(true).children[0];
+  },
+  // if content type == table
+  create_table: () => {
+    return table_template.content.cloneNode(true).children[0];
+  },
+};
+
+},{}],3:[function(require,module,exports){
+// fetching functions
+const {create_card, create_title, create_paragraph, create_code, create_table} = require("./functions/functions")
+
+console.log(create_card());
+
 let breakpoint_content = require("./card_content/breakpoint_content");
 
+let cards = [];
+
+cards.push(breakpoint_content);
+
+// fetching the main content area where cards will go
+const main_content_area = document.querySelector("#maincontent");
+
+// fetching templates
+// fetching the card template
+const card_template = document.querySelector("#card_template");
+// fetching title template
+const title_template = document.querySelector("#title_template");
+// fetching paragraph template
+const paragraph_template = document.querySelector("#paragraph_template");
+// fetching the code container template
+const code_template = document.querySelector("#code_template");
+// fetching table template
+const table_template = document.querySelector("#table_template");
+
+
+
+
+
+
+
+
+
+
+/*
 const card_template = document.querySelector("#cardtemplate");
 const main_content_area = document.querySelector("#maincontent");
 const code_container_template = document.querySelector(
@@ -179,5 +238,6 @@ for (let i = 0; i < 1; i++) {
 
   main_content_area.appendChild(new_card);
 }
+*/
 
-},{"./card_content/breakpoint_content":1}]},{},[2]);
+},{"./card_content/breakpoint_content":1,"./functions/functions":2}]},{},[3]);

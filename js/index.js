@@ -1,16 +1,23 @@
 // fetching functions
-const {create_card, create_title, create_paragraph, create_code, create_table} = require("./functions/functions")
-
-console.log(create_card());
+const {
+  create_card,
+  create_title,
+  create_paragraph,
+  create_code,
+  create_table,
+  append_child,
+} = require("./functions/functions");
 
 let breakpoint_content = require("./card_content/breakpoint_content");
+let gridsystem_content = require("./card_content/gridsystem_content")
 
 let cards = [];
 
 cards.push(breakpoint_content);
+cards.push(gridsystem_content);
 
 // fetching the main content area where cards will go
-const main_content_area = document.querySelector("#maincontent");
+const main_content_area = document.querySelector("#main_content");
 
 // fetching templates
 // fetching the card template
@@ -24,42 +31,53 @@ const code_template = document.querySelector("#code_template");
 // fetching table template
 const table_template = document.querySelector("#table_template");
 
+cards.forEach((e) => {
+  insert_card(e.name, e.content.card_header, e.content.card_body);
+});
 
+function insert_card(name, card_header_content, card_body_content) {
+  // create a new card
+  let new_card = create_card();
 
-
-
-
-
-
-
-
-/*
-const card_template = document.querySelector("#cardtemplate");
-const main_content_area = document.querySelector("#maincontent");
-const code_container_template = document.querySelector(
-  "#codecontainertemplate"
-);
-
-for (let i = 0; i < 1; i++) {
-  let new_card = card_template.content.cloneNode(true).children[0];
-
-  let code_container =
-    code_container_template.content.cloneNode(true).children[0];
-
+  // get the card header
   let new_card_header = new_card.querySelector("[card-header]");
-  new_card_header.setAttribute("data-bs-target", `#${breakpoint_content.name}`);
+
+  // get the card body
   let new_card_body = new_card.querySelector("[card-body]");
-  new_card_body.setAttribute("id", breakpoint_content.name);
-  let code_container_body = code_container.querySelector("[code-content]");
 
-  new_card_header.innerHTML = breakpoint_content.content.card_header;
-  // new_card_body.innerHTML =
-  // breakpoint_content.card_body;
+  // set the card header
+  new_card_header.innerHTML = card_header_content;
 
-  code_container_body.innerHTML = breakpoint_content.content.code_block;
+  // set data-bs-target attribute on card header
+  // so the collapsing of body will work
+  new_card_header.setAttribute("data-bs-target", `#${name}`);
 
-  new_card_body.appendChild(code_container);
+  // setting an id to the body for the collapsing to target innerHTML
+  new_card_body.setAttribute("id", name);
 
-  main_content_area.appendChild(new_card);
+  for (data in card_body_content) {
+    let value = card_body_content[data].content;
+    let type = card_body_content[data].type;
+    if(type == "title"){
+      let new_title = create_title(value);
+      append_child(new_card_body, new_title)
+    }
+
+    else if(type == "paragraph"){
+      let new_paragraph = create_paragraph(value);
+      append_child(new_card_body, new_paragraph)
+    }
+
+    else if(type == "table"){
+      let new_table = create_table(value);
+      append_child(new_card_body, new_table)
+    }
+    else if(type == "code"){
+      let new_code = create_code(value);
+      append_child(new_card_body, new_code)
+    }
+  }
+
+  // add the card to the display area
+  append_child(main_content_area, new_card);
 }
-*/

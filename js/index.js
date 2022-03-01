@@ -1,81 +1,83 @@
-const template = document.querySelector("#cardtemplate")
-const maincontent = document.querySelector("#maincontent")
+// fetching functions
+const {
+  create_card,
+  create_title,
+  create_paragraph,
+  create_code,
+  create_table,
+  append_child,
+} = require("./functions/functions");
 
-let card = template.content.cloneNode(true).children[0]
+let breakpoint_content = require("./card_content/breakpoint_content");
+let gridsystem_content = require("./card_content/gridsystem_content")
 
-let card_header = card.querySelector("[card-header]")
-let card_body = card.querySelector("[card-body]")
+let cards = [];
 
+cards.push(breakpoint_content);
+cards.push(gridsystem_content);
 
-let codeblock = `
-<div class="highlight"><pre tabindex="0" class="highlight"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-      Column
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-      Column
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-      Column
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
-`
+// fetching the main content area where cards will go
+const main_content_area = document.querySelector("#main_content");
 
-card_header.innerHTML = "<h3>Break Points</h3>"
+// fetching templates
+// fetching the card template
+const card_template = document.querySelector("#card_template");
+// fetching title template
+const title_template = document.querySelector("#title_template");
+// fetching paragraph template
+const paragraph_template = document.querySelector("#paragraph_template");
+// fetching the code container template
+const code_template = document.querySelector("#code_template");
+// fetching table template
+const table_template = document.querySelector("#table_template");
 
-card_body.innerHTML = `
-<p>
-      Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.
-      </p>
-     <p>
-      Bootstrap have six default breakpoints
-     </p>
-     <table class="table">
-      <thead>
-        <tr>
-          <th>Breakpoint</th>
-          <th>Class</th>
-          <th>Dimensions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>X-Small</td>
-          <td><em>None</em></td>
-          <td>&lt;576px</td>
-        </tr>
-        <tr>
-          <td>Small</td>
-          <td><code>sm</code></td>
-          <td>≥576px</td>
-        </tr>
-        <tr>
-          <td>Medium</td>
-          <td><code>md</code></td>
-          <td>≥768px</td>
-        </tr>
-        <tr>
-          <td>Large</td>
-          <td><code>lg</code></td>
-          <td>≥992px</td>
-        </tr>
-        <tr>
-          <td>Extra large</td>
-          <td><code>xl</code></td>
-          <td>≥1200px</td>
-        </tr>
-        <tr>
-          <td>Extra extra large</td>
-          <td><code>xxl</code></td>
-          <td>≥1400px</td>
-        </tr>
-      </tbody>
-    </table>
-    ${codeblock}
-`
+cards.forEach((e) => {
+  insert_card(e.name, e.content.card_header, e.content.card_body);
+});
 
+function insert_card(name, card_header_content, card_body_content) {
+  // create a new card
+  let new_card = create_card();
 
+  // get the card header
+  let new_card_header = new_card.querySelector("[card-header]");
 
-maincontent.appendChild(card)
+  // get the card body
+  let new_card_body = new_card.querySelector("[card-body]");
+
+  // set the card header
+  new_card_header.innerHTML = card_header_content;
+
+  // set data-bs-target attribute on card header
+  // so the collapsing of body will work
+  new_card_header.setAttribute("data-bs-target", `#${name}`);
+
+  // setting an id to the body for the collapsing to target innerHTML
+  new_card_body.setAttribute("id", name);
+
+  for (data in card_body_content) {
+    let value = card_body_content[data].content;
+    let type = card_body_content[data].type;
+    if(type == "title"){
+      let new_title = create_title(value);
+      append_child(new_card_body, new_title)
+    }
+
+    else if(type == "paragraph"){
+      let new_paragraph = create_paragraph(value);
+      append_child(new_card_body, new_paragraph)
+    }
+
+    else if(type == "table"){
+      let new_table = create_table(value);
+      append_child(new_card_body, new_table)
+    }
+    else if(type == "code"){
+      let new_code = create_code(value);
+      append_child(new_card_body, new_code)
+    }
+  }
+
+  // add the card to the display area
+  append_child(main_content_area, new_card);
+}

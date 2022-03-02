@@ -239,7 +239,7 @@ const {
 } = require("./functions/functions");
 
 let breakpoint_content = require("./card_content/breakpoint_content");
-let gridsystem_content = require("./card_content/gridsystem_content")
+let gridsystem_content = require("./card_content/gridsystem_content");
 
 let cards = [];
 
@@ -283,31 +283,46 @@ function insert_card(name, card_header_content, card_body_content) {
   new_card_header.setAttribute("data-bs-target", `#${name}`);
 
   // setting an id to the body for the collapsing to target innerHTML
-  new_card_body.setAttribute("id", name);
+  new_card.querySelector(".collapse").setAttribute("id", name);
 
   for (data in card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
-    if(type == "title"){
+    if (type == "title") {
       let new_title = create_title(value);
-      append_child(new_card_body, new_title)
-    }
-
-    else if(type == "paragraph"){
+      append_child(new_card_body, new_title);
+    } else if (type == "paragraph") {
       let new_paragraph = create_paragraph(value);
-      append_child(new_card_body, new_paragraph)
-    }
-
-    else if(type == "table"){
+      append_child(new_card_body, new_paragraph);
+    } else if (type == "table") {
       let new_table = create_table(value);
-      append_child(new_card_body, new_table)
-    }
-    else if(type == "code"){
+      append_child(new_card_body, new_table);
+    } else if (type == "code") {
       let new_code = create_code(value);
-      append_child(new_card_body, new_code)
+      append_child(new_card_body, new_code);
     }
   }
 
+  // adding event listeners
+
+  // scroll tot he header position when clicked
+  new_card_header.addEventListener("click", (e) => {
+    // e.clientY == the point of click w.r.t the document
+    // e.target.getBoundingClientRect().top == position of the header from the top
+    // element_click_pos == position of click w.r.t the header
+    let element_click_pos = e.clientY - e.target.getBoundingClientRect().top;
+    let scroll_distance = e.clientY - element_click_pos;
+
+    window.scrollBy({
+      top: scroll_distance,
+      behaviour: "smooth",
+    });
+  });
+
+
+
+
+  
   // add the card to the display area
   append_child(main_content_area, new_card);
 }

@@ -19,18 +19,13 @@
   align-self: start;
 }
 
-.card-body.alert {
-  border-radius: 0;
-  margin-bottom: 0;
+.card-body {
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .card-body table {
   background-color: var(--table-background);
-}
-
-.card-body {
-  height: 400px;
-  overflow-y: scroll;
 }
 
 *[data-bs-toggle="collapse"] {
@@ -41,8 +36,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-
-
 
 /* formatting for code elements */
 .highlight {
@@ -71,7 +64,7 @@ p code {
   border-radius: 3px;
   font-size: 85%;
   padding: 0.2em 0.4em;
-  color: #EB5757;
+  color: #eb5757;
 }
 
 /* style for code container */

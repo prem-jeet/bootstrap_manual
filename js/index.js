@@ -77,22 +77,20 @@ function insert_card(name, card_header_content, card_body_content) {
 
   // scroll tot he header position when clicked
   new_card_header.addEventListener("click", (e) => {
-    // e.clientY == the point of click w.r.t the document
-    // e.target.getBoundingClientRect().top == position of the header from the top
-    // element_click_pos == position of click w.r.t the header
-    let element_click_pos = e.clientY - e.target.getBoundingClientRect().top;
-    let scroll_distance = e.clientY - element_click_pos;
+    setTimeout(() => {
+      // e.clientY == the point of click w.r.t the document
+      // e.target.getBoundingClientRect().top == position of the header from the top
+      // element_click_pos == position of click w.r.t the header
+      let element_click_pos = e.clientY - e.target.getBoundingClientRect().top;
+      let scroll_distance = e.clientY - element_click_pos;
 
-    window.scrollBy({
-      top: scroll_distance,
-      behaviour: "smooth",
-    });
+      window.scrollBy({
+        top: scroll_distance,
+        behaviour: "smooth",
+      });
+    }, 350);
   });
 
-
-
-
-  
   // add the card to the display area
   append_child(main_content_area, new_card);
 }

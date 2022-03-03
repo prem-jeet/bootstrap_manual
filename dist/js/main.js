@@ -63,72 +63,6 @@ module.exports = {
   },
 };
 
-/*
-`
-    <p>
-          Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.
-          </p>
-         <p>
-          Bootstrap have six default breakpoints
-         </p>
-         <table class="table">
-          <thead>
-            <tr>
-              <th>Breakpoint</th>
-              <th>Class</th>
-              <th>Dimensions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>X-Small</td>
-              <td><em>None</em></td>
-              <td>&lt;576px</td>
-            </tr>
-            <tr>
-              <td>Small</td>
-              <td><code>sm</code></td>
-              <td>≥576px</td>
-            </tr>
-            <tr>
-              <td>Medium</td>
-              <td><code>md</code></td>
-              <td>≥768px</td>
-            </tr>
-            <tr>
-              <td>Large</td>
-              <td><code>lg</code></td>
-              <td>≥992px</td>
-            </tr>
-            <tr>
-              <td>Extra large</td>
-              <td><code>xl</code></td>
-              <td>≥1200px</td>
-            </tr>
-            <tr>
-              <td>Extra extra large</td>
-              <td><code>xxl</code></td>
-              <td>≥1400px</td>
-            </tr>
-          </tbody>
-        </table>
-    `,
-    code_block: `
-    <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-        Column
-      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-        Column
-      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-        Column
-      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre>
-    `,
-*/
 
 },{}],2:[function(require,module,exports){
 module.exports = {
@@ -194,7 +128,7 @@ module.exports = {
 module.exports = {
   // create card
   create_card: function () {
-      return card_template.content.cloneNode(true).children[0]
+    return card_template.content.cloneNode(true).children[0];
   },
   // if content type == title
   create_title: (value) => {
@@ -205,26 +139,60 @@ module.exports = {
 
   // if content type == paragraph
   create_paragraph: (value) => {
-    let paragraph =  paragraph_template.content.cloneNode(true).children[0];
+    let paragraph = paragraph_template.content.cloneNode(true).children[0];
     paragraph.innerHTML = value;
-    return paragraph
+    return paragraph;
   },
   // if content type == code
   create_code: (value) => {
     let code = code_template.content.cloneNode(true).children[0];
-    let code_display_area= code.querySelector("[code-display-area]")
+    let code_display_area = code.querySelector("[code-display-area]");
     code_display_area.innerHTML = value;
-    return code
+    return code;
   },
   // if content type == table
   create_table: (value) => {
-    let table =  table_template.content.cloneNode(true).children[0];
+    let table = table_template.content.cloneNode(true).children[0];
     table.innerHTML = value;
     return table;
   },
+
+  // copy button logic
+  copy_button_control: (element) => {
+    element.addEventListener("click", () => {
+      // select the code display area
+      let code_display_area = element.parentNode.querySelector(
+        "[code-display-area]"
+      );
+
+      // extract the text from the code display area
+      let copied_text = code_display_area.textContent;
+
+      // copy the text to the clipboard
+      navigator.clipboard.writeText(copied_text);
+
+      // change the button from primary to success
+      element.classList.remove("btn-outline-primary");
+      element.classList.add("btn-success");
+      
+
+      // change the text of copy button from copy to copied
+      element.innerText = "copied";
+
+      // reset the text of copy button from copied to copy after 800ms
+      setTimeout(() => {
+        //rechange the button from success to primary
+        element.classList.remove("btn-success");
+        element.classList.add("btn-outline-primary");
+
+        // reset the inner text of copy button
+        element.innerText = "copy";
+      }, 800);
+    });
+  },
   append_child: (parent, child) => {
-        parent.appendChild(child)
-  }
+    parent.appendChild(child);
+  },
 };
 
 },{}],4:[function(require,module,exports){
@@ -235,11 +203,15 @@ const {
   create_paragraph,
   create_code,
   create_table,
+  copy_button_control,
   append_child,
 } = require("./functions/functions");
 
+
 let breakpoint_content = require("./card_content/breakpoint_content");
 let gridsystem_content = require("./card_content/gridsystem_content");
+
+
 
 let cards = [];
 
@@ -289,17 +261,22 @@ function insert_card(name, card_header_content, card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
     if (type == "title") {
-      let new_title = create_title(value);
-      append_child(new_card_body, new_title);
+      let new_title_element = create_title(value);
+      append_child(new_card_body, new_title_element);
     } else if (type == "paragraph") {
-      let new_paragraph = create_paragraph(value);
-      append_child(new_card_body, new_paragraph);
+      let new_paragraph_element = create_paragraph(value);
+      append_child(new_card_body, new_paragraph_element);
     } else if (type == "table") {
-      let new_table = create_table(value);
-      append_child(new_card_body, new_table);
+      let new_table_element = create_table(value);
+      append_child(new_card_body, new_table_element);
     } else if (type == "code") {
-      let new_code = create_code(value);
-      append_child(new_card_body, new_code);
+      let new_code_element = create_code(value);
+
+      // addding functionaality to copy button
+      let copy_button = new_code_element.querySelector("[copy-button]");
+      copy_button_control(copy_button);
+
+      append_child(new_card_body, new_code_element);
     }
   }
 

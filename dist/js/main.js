@@ -63,72 +63,6 @@ module.exports = {
   },
 };
 
-/*
-`
-    <p>
-          Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.
-          </p>
-         <p>
-          Bootstrap have six default breakpoints
-         </p>
-         <table class="table">
-          <thead>
-            <tr>
-              <th>Breakpoint</th>
-              <th>Class</th>
-              <th>Dimensions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>X-Small</td>
-              <td><em>None</em></td>
-              <td>&lt;576px</td>
-            </tr>
-            <tr>
-              <td>Small</td>
-              <td><code>sm</code></td>
-              <td>≥576px</td>
-            </tr>
-            <tr>
-              <td>Medium</td>
-              <td><code>md</code></td>
-              <td>≥768px</td>
-            </tr>
-            <tr>
-              <td>Large</td>
-              <td><code>lg</code></td>
-              <td>≥992px</td>
-            </tr>
-            <tr>
-              <td>Extra large</td>
-              <td><code>xl</code></td>
-              <td>≥1200px</td>
-            </tr>
-            <tr>
-              <td>Extra extra large</td>
-              <td><code>xxl</code></td>
-              <td>≥1400px</td>
-            </tr>
-          </tbody>
-        </table>
-    `,
-    code_block: `
-    <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-        Column
-      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-        Column
-      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
-        Column
-      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre>
-    `,
-*/
 
 },{}],2:[function(require,module,exports){
 module.exports = {
@@ -196,6 +130,7 @@ module.exports = {
   create_card: function (template) {
     return template.content.cloneNode(true).children[0];
   },
+  
   // if content type == title
   create_title: (template, value) => {
     let title = template.content.cloneNode(true).children[0];
@@ -206,9 +141,11 @@ module.exports = {
   // if content type == paragraph
   create_paragraph: (template, value) => {
     let paragraph = template.content.cloneNode(true).children[0];
+
     paragraph.innerHTML = value;
     return paragraph;
   },
+  
   // if content type == code
   create_code: (template, value) => {
     let code = template.content.cloneNode(true).children[0];
@@ -216,12 +153,49 @@ module.exports = {
     code_display_area.innerHTML = value;
     return code;
   },
+  
   // if content type == table
-  create_table: (template, value) => {
+create_table: (template, value) => {
     let table = template.content.cloneNode(true).children[0];
     table.innerHTML = value;
     return table;
   },
+
+  // copy button logic
+  copy_button_control: (element) => {
+    element.addEventListener("click", () => {
+      // select the code display area
+      let code_display_area = element.parentNode.querySelector(
+        "[code-display-area]"
+      );
+
+      // extract the text from the code display area
+      let copied_text = code_display_area.textContent;
+
+      // copy the text to the clipboard
+      navigator.clipboard.writeText(copied_text);
+
+      // change the button from primary to success
+      element.classList.remove("btn-outline-primary");
+      element.classList.add("btn-success");
+      
+
+      // change the text of copy button from copy to copied
+      element.innerText = "copied";
+
+      // reset the text of copy button from copied to copy after 800ms
+      setTimeout(() => {
+        //rechange the button from success to primary
+        element.classList.remove("btn-success");
+        element.classList.add("btn-outline-primary");
+
+        // reset the inner text of copy button
+        element.innerText = "copy";
+      }, 800);
+    });
+  },
+
+  
   // appends the child to the parent
   append_child: (parent, child) => {
     parent.appendChild(child);
@@ -236,11 +210,15 @@ const {
   create_paragraph,
   create_code,
   create_table,
+  copy_button_control,
   append_child,
 } = require("./functions/functions");
 
+
 let breakpoint_content = require("./card_content/breakpoint_content");
 let gridsystem_content = require("./card_content/gridsystem_content");
+
+
 
 let cards = [];
 
@@ -290,7 +268,8 @@ function insert_card(name, card_header_content, card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
     if (type == "title") {
-      let new_title = create_title(title_template, value);
+
+          let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
     } else if (type == "paragraph") {
       let new_paragraph = create_paragraph(paragraph_template, value);
@@ -299,8 +278,13 @@ function insert_card(name, card_header_content, card_body_content) {
       let new_table = create_table(table_template, value);
       append_child(new_card_body, new_table);
     } else if (type == "code") {
-      let new_code = create_code(code_template, value);
-      append_child(new_card_body, new_code);
+      let new_code_element = create_code(value);
+
+      // addding functionaality to copy button
+      let copy_button = new_code_element.querySelector("[copy-button]");
+      copy_button_control(copy_button);
+
+      append_child(new_card_body, new_code_element);
     }
   }
 

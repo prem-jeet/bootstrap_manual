@@ -5,11 +5,15 @@ const {
   create_paragraph,
   create_code,
   create_table,
+  copy_button_control,
   append_child,
 } = require("./functions/functions");
 
+
 let breakpoint_content = require("./card_content/breakpoint_content");
 let gridsystem_content = require("./card_content/gridsystem_content");
+
+
 
 let cards = [];
 
@@ -59,6 +63,7 @@ function insert_card(name, card_header_content, card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
     if (type == "title") {
+
       let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
     } else if (type == "paragraph") {
@@ -68,8 +73,14 @@ function insert_card(name, card_header_content, card_body_content) {
       let new_table = create_table(table_template, value);
       append_child(new_card_body, new_table);
     } else if (type == "code") {
-      let new_code = create_code(code_template, value);
-      append_child(new_card_body, new_code);
+      let new_code_element = create_code(code_template, value);
+      
+      // adding functionality to copy button
+      let copy_button = new_code_element.querySelector("[copy-button]");
+      copy_button_control(copy_button);
+      
+      append_child(new_card_body, new_code_element);
+
     }
   }
 

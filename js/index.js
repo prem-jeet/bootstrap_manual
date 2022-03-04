@@ -37,7 +37,7 @@ cards.forEach((e) => {
 
 function insert_card(name, card_header_content, card_body_content) {
   // create a new card
-  let new_card = create_card();
+  let new_card = create_card(card_template);
 
   // get the card header
   let new_card_header = new_card.querySelector("[card-header]");
@@ -59,16 +59,16 @@ function insert_card(name, card_header_content, card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
     if (type == "title") {
-      let new_title = create_title(value);
+      let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
     } else if (type == "paragraph") {
-      let new_paragraph = create_paragraph(value);
+      let new_paragraph = create_paragraph(paragraph_template, value);
       append_child(new_card_body, new_paragraph);
     } else if (type == "table") {
-      let new_table = create_table(value);
+      let new_table = create_table(table_template, value);
       append_child(new_card_body, new_table);
     } else if (type == "code") {
-      let new_code = create_code(value);
+      let new_code = create_code(code_template, value);
       append_child(new_card_body, new_code);
     }
   }

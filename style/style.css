@@ -37,6 +37,10 @@
   flex-wrap: wrap;
 }
 
+#outputmodal .alert{
+  margin-bottom: 0;
+}
+
 /* formatting for code elements */
 .highlight {
   background-color: #f8f9fa;

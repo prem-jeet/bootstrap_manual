@@ -23,13 +23,13 @@
   <body>
     <!-- modals -->
     <!-- getting started modal -->
-    <div class="modal fade" id="gettingStartedModal">
+    <div class="modal fade" id="gettingStartedmodal">
       <div
         class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
       >
         <div class="modal-content">
           <div class="modal-header">
-            <h3>Getting Started</h3>
+            <h5>Getting Started</h5>
             <button class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
@@ -106,7 +106,26 @@
       </div>
     </div>
 
-    <!-- output modal -->
+    <!-- modal to display the output of code blocks -->
+    <div class="modal fade" id="outputmodal">
+      <div class="modal-dialog modal-dialog-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Code Output</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body alert alert-danger">
+            <p class="modal-text text-primary" code-output-area>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- main nav -->
     <div class="container-fluid main-header">
@@ -118,7 +137,7 @@
           <button
             class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#gettingStartedModal"
+            data-bs-target="#gettingStartedmodal"
           >
             Getting Started
           </button>

@@ -6,6 +6,7 @@ const {
   create_code,
   create_table,
   append_child,
+  run_button_control
 } = require("./functions/functions");
 
 let breakpoint_content = require("./card_content/breakpoint_content");
@@ -18,6 +19,12 @@ cards.push(gridsystem_content);
 
 // fetching the main content area where cards will go
 const main_content_area = document.querySelector("#main_content");
+
+// fetching the code out put area
+const code_output_area = document.querySelector("#outputmodal [code-output-area]")
+
+
+
 
 // fetching templates
 // fetching the card template
@@ -69,13 +76,19 @@ function insert_card(name, card_header_content, card_body_content) {
       append_child(new_card_body, new_table);
     } else if (type == "code") {
       let new_code = create_code(value);
+
+      // adding functionality to run button
+      let run_button = new_code.querySelector("#runbutton")
+      run_button_control(run_button, code_output_area);
+      
+      
       append_child(new_card_body, new_code);
     }
   }
 
-  // adding event listeners
+  // adding event listener
 
-  // scroll tot he header position when clicked
+  // scroll to the header position when clicked
   new_card_header.addEventListener("click", (e) => {
     setTimeout(() => {
       // e.clientY == the point of click w.r.t the document

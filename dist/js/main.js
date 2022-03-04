@@ -194,7 +194,7 @@ module.exports = {
 module.exports = {
   // create card
   create_card: function () {
-      return card_template.content.cloneNode(true).children[0]
+    return card_template.content.cloneNode(true).children[0];
   },
   // if content type == title
   create_title: (value) => {
@@ -205,26 +205,33 @@ module.exports = {
 
   // if content type == paragraph
   create_paragraph: (value) => {
-    let paragraph =  paragraph_template.content.cloneNode(true).children[0];
+    let paragraph = paragraph_template.content.cloneNode(true).children[0];
     paragraph.innerHTML = value;
-    return paragraph
+    return paragraph;
   },
   // if content type == code
   create_code: (value) => {
     let code = code_template.content.cloneNode(true).children[0];
-    let code_display_area= code.querySelector("[code-display-area]")
+    let code_display_area = code.querySelector("[code-display-area]");
     code_display_area.innerHTML = value;
-    return code
+    return code;
   },
   // if content type == table
   create_table: (value) => {
-    let table =  table_template.content.cloneNode(true).children[0];
+    let table = table_template.content.cloneNode(true).children[0];
     table.innerHTML = value;
     return table;
   },
+
+  // run button control
+  run_button_control: (element, output_area) => {
+    let code = element.parentNode.querySelector("[code-display-area]");
+    code = code.textContent;
+    output_area.innerHTML = code;
+  },
   append_child: (parent, child) => {
-        parent.appendChild(child)
-  }
+    parent.appendChild(child);
+  },
 };
 
 },{}],4:[function(require,module,exports){
@@ -236,6 +243,7 @@ const {
   create_code,
   create_table,
   append_child,
+  run_button_control
 } = require("./functions/functions");
 
 let breakpoint_content = require("./card_content/breakpoint_content");
@@ -248,6 +256,12 @@ cards.push(gridsystem_content);
 
 // fetching the main content area where cards will go
 const main_content_area = document.querySelector("#main_content");
+
+// fetching the code out put area
+const code_output_area = document.querySelector("#outputmodal [code-output-area]")
+
+
+
 
 // fetching templates
 // fetching the card template
@@ -299,13 +313,19 @@ function insert_card(name, card_header_content, card_body_content) {
       append_child(new_card_body, new_table);
     } else if (type == "code") {
       let new_code = create_code(value);
+
+      // adding functionality to run button
+      let run_button = new_code.querySelector("#runbutton")
+      run_button_control(run_button, code_output_area);
+      
+      
       append_child(new_card_body, new_code);
     }
   }
 
-  // adding event listeners
+  // adding event listener
 
-  // scroll tot he header position when clicked
+  // scroll to the header position when clicked
   new_card_header.addEventListener("click", (e) => {
     setTimeout(() => {
       // e.clientY == the point of click w.r.t the document

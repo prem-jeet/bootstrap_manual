@@ -127,32 +127,36 @@ module.exports = {
 },{}],3:[function(require,module,exports){
 module.exports = {
   // create card
-  create_card: function () {
-    return card_template.content.cloneNode(true).children[0];
+  create_card: function (template) {
+    return template.content.cloneNode(true).children[0];
   },
+  
   // if content type == title
-  create_title: (value) => {
-    let title = title_template.content.cloneNode(true).children[0];
+  create_title: (template, value) => {
+    let title = template.content.cloneNode(true).children[0];
     title.innerText = value;
     return title;
   },
 
   // if content type == paragraph
-  create_paragraph: (value) => {
-    let paragraph = paragraph_template.content.cloneNode(true).children[0];
+  create_paragraph: (template, value) => {
+    let paragraph = template.content.cloneNode(true).children[0];
+
     paragraph.innerHTML = value;
     return paragraph;
   },
+  
   // if content type == code
-  create_code: (value) => {
-    let code = code_template.content.cloneNode(true).children[0];
+  create_code: (template, value) => {
+    let code = template.content.cloneNode(true).children[0];
     let code_display_area = code.querySelector("[code-display-area]");
     code_display_area.innerHTML = value;
     return code;
   },
+  
   // if content type == table
-  create_table: (value) => {
-    let table = table_template.content.cloneNode(true).children[0];
+create_table: (template, value) => {
+    let table = template.content.cloneNode(true).children[0];
     table.innerHTML = value;
     return table;
   },
@@ -190,6 +194,9 @@ module.exports = {
       }, 800);
     });
   },
+
+  
+  // appends the child to the parent
   append_child: (parent, child) => {
     parent.appendChild(child);
   },
@@ -239,7 +246,7 @@ cards.forEach((e) => {
 
 function insert_card(name, card_header_content, card_body_content) {
   // create a new card
-  let new_card = create_card();
+  let new_card = create_card(card_template);
 
   // get the card header
   let new_card_header = new_card.querySelector("[card-header]");
@@ -261,14 +268,15 @@ function insert_card(name, card_header_content, card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
     if (type == "title") {
-      let new_title_element = create_title(value);
-      append_child(new_card_body, new_title_element);
+
+          let new_title = create_title(title_template, value);
+      append_child(new_card_body, new_title);
     } else if (type == "paragraph") {
-      let new_paragraph_element = create_paragraph(value);
-      append_child(new_card_body, new_paragraph_element);
+      let new_paragraph = create_paragraph(paragraph_template, value);
+      append_child(new_card_body, new_paragraph);
     } else if (type == "table") {
-      let new_table_element = create_table(value);
-      append_child(new_card_body, new_table_element);
+      let new_table = create_table(table_template, value);
+      append_child(new_card_body, new_table);
     } else if (type == "code") {
       let new_code_element = create_code(value);
 

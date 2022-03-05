@@ -88,7 +88,7 @@ function insert_card(name, card_header_content, card_body_content) {
       copy_button_control(copy_button);
 
       // adding functionality to run button
-      let run_button = new_code.querySelector("#runbutton")
+      let run_button = new_code_element.querySelector("[run-button]")
       run_button_control(run_button, code_output_area);
             
       append_child(new_card_body, new_code_element);
@@ -105,14 +105,14 @@ function insert_card(name, card_header_content, card_body_content) {
       // e.clientY == the point of click w.r.t the document
       // e.target.getBoundingClientRect().top == position of the header from the top
       // element_click_pos == position of click w.r.t the header
-      let element_click_pos = e.clientY - e.target.getBoundingClientRect().top;
-      let scroll_distance = e.clientY - element_click_pos;
-
+      // let element_click_pos = e.clientY - e.target.getBoundingClientRect().top;
+      // let scroll_distance = e.clientY - element_click_pos;
+      let scroll_distance = e.target.getBoundingClientRect().top - 10;
       window.scrollBy({
         top: scroll_distance,
         behaviour: "smooth",
       });
-    }, 350);
+    }, 390);
   });
 
   // add the card to the display area

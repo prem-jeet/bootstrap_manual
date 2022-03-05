@@ -129,9 +129,7 @@ module.exports = {
   // create card
   create_card: function (template) {
     return template.content.cloneNode(true).children[0];
-
   },
-  
   // if content type == title
   create_title: (template, value) => {
     let title = template.content.cloneNode(true).children[0];
@@ -147,7 +145,6 @@ module.exports = {
   },
   
   // if content type == code
-
   create_code: (template, value) => {
     let code = template.content.cloneNode(true).children[0];
     let code_display_area = code.querySelector("[code-display-area]");
@@ -156,11 +153,12 @@ module.exports = {
   },
   
   // if content type == table
-create_table: (template, value) => {
+  create_table: (template, value) => {
     let table = template.content.cloneNode(true).children[0];
     table.innerHTML = value;
     return table;
   },
+
 
   // run button control
   run_button_control: (element, output_area) => {
@@ -203,7 +201,6 @@ create_table: (template, value) => {
     });
   },
 
-  
   // appends the child to the parent
   append_child: (parent, child) => {
     parent.appendChild(child);
@@ -284,7 +281,7 @@ function insert_card(name, card_header_content, card_body_content) {
     let type = card_body_content[data].type;
     if (type == "title") {
 
-          let new_title = create_title(title_template, value);
+      let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
     } else if (type == "paragraph") {
       let new_paragraph = create_paragraph(paragraph_template, value);
@@ -293,19 +290,19 @@ function insert_card(name, card_header_content, card_body_content) {
       let new_table = create_table(table_template, value);
       append_child(new_card_body, new_table);
     } else if (type == "code") {
-      let new_code_element = create_code(value);
 
+      let new_code_element = create_code(code_template, value);
+      
       // adding functionality to copy button
       let copy_button = new_code_element.querySelector("[copy-button]");
       copy_button_control(copy_button);
 
-
       // adding functionality to run button
-      let run_button = new_code.querySelector("#runbutton")
+      let run_button = new_code_element.querySelector("[run-button]")
       run_button_control(run_button, code_output_area);
-      
-  
+            
       append_child(new_card_body, new_code_element);
+
 
     }
   }
@@ -318,14 +315,14 @@ function insert_card(name, card_header_content, card_body_content) {
       // e.clientY == the point of click w.r.t the document
       // e.target.getBoundingClientRect().top == position of the header from the top
       // element_click_pos == position of click w.r.t the header
-      let element_click_pos = e.clientY - e.target.getBoundingClientRect().top;
-      let scroll_distance = e.clientY - element_click_pos;
-
+      // let element_click_pos = e.clientY - e.target.getBoundingClientRect().top;
+      // let scroll_distance = e.clientY - element_click_pos;
+      let scroll_distance = e.target.getBoundingClientRect().top - 10;
       window.scrollBy({
         top: scroll_distance,
         behaviour: "smooth",
       });
-    }, 350);
+    }, 390);
   });
 
   // add the card to the display area

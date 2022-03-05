@@ -1,9 +1,7 @@
 module.exports = {
   // create card
-
   create_card: function (template) {
     return template.content.cloneNode(true).children[0];
-
   },
   // if content type == title
   create_title: (template, value) => {
@@ -13,28 +11,33 @@ module.exports = {
   },
 
   // if content type == paragraph
-
   create_paragraph: (template, value) => {
     let paragraph = template.content.cloneNode(true).children[0];
-
     paragraph.innerHTML = value;
     return paragraph;
   },
+  
   // if content type == code
-<
   create_code: (template, value) => {
     let code = template.content.cloneNode(true).children[0];
-
     let code_display_area = code.querySelector("[code-display-area]");
     code_display_area.innerHTML = value;
     return code;
   },
+  
   // if content type == table
-
   create_table: (template, value) => {
     let table = template.content.cloneNode(true).children[0];
     table.innerHTML = value;
     return table;
+  },
+
+
+  // run button control
+  run_button_control: (element, output_area) => {
+    let code = element.parentNode.querySelector("[code-display-area]");
+    code = code.textContent;
+    output_area.innerHTML = code;
   },
 
   // copy button logic

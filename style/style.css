@@ -43,6 +43,12 @@ body {
   flex-wrap: wrap;
 }
 
+
+#outputmodal .alert{
+  margin-bottom: 0;
+}
+
+
 [copy-button] {
   text-transform: uppercase;
   font-size: 80%;
@@ -52,6 +58,7 @@ body {
   flex: 1;
   max-width: 512px;
 }
+
 /* formatting for code elements */
 .highlight {
   background-color: #f8f9fa;

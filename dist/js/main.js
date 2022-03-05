@@ -129,6 +129,7 @@ module.exports = {
   // create card
   create_card: function (template) {
     return template.content.cloneNode(true).children[0];
+
   },
   
   // if content type == title
@@ -141,12 +142,12 @@ module.exports = {
   // if content type == paragraph
   create_paragraph: (template, value) => {
     let paragraph = template.content.cloneNode(true).children[0];
-
     paragraph.innerHTML = value;
     return paragraph;
   },
   
   // if content type == code
+
   create_code: (template, value) => {
     let code = template.content.cloneNode(true).children[0];
     let code_display_area = code.querySelector("[code-display-area]");
@@ -159,6 +160,13 @@ create_table: (template, value) => {
     let table = template.content.cloneNode(true).children[0];
     table.innerHTML = value;
     return table;
+  },
+
+  // run button control
+  run_button_control: (element, output_area) => {
+    let code = element.parentNode.querySelector("[code-display-area]");
+    code = code.textContent;
+    output_area.innerHTML = code;
   },
 
   // copy button logic
@@ -212,6 +220,7 @@ const {
   create_table,
   copy_button_control,
   append_child,
+  run_button_control
 } = require("./functions/functions");
 
 
@@ -227,6 +236,12 @@ cards.push(gridsystem_content);
 
 // fetching the main content area where cards will go
 const main_content_area = document.querySelector("#main_content");
+
+// fetching the code out put area
+const code_output_area = document.querySelector("#outputmodal [code-output-area]")
+
+
+
 
 // fetching templates
 // fetching the card template
@@ -280,17 +295,24 @@ function insert_card(name, card_header_content, card_body_content) {
     } else if (type == "code") {
       let new_code_element = create_code(value);
 
-      // addding functionaality to copy button
+      // adding functionality to copy button
       let copy_button = new_code_element.querySelector("[copy-button]");
       copy_button_control(copy_button);
 
+
+      // adding functionality to run button
+      let run_button = new_code.querySelector("#runbutton")
+      run_button_control(run_button, code_output_area);
+      
+  
       append_child(new_card_body, new_code_element);
+
     }
   }
 
-  // adding event listeners
+  // adding event listener
 
-  // scroll tot he header position when clicked
+  // scroll to the header position when clicked
   new_card_header.addEventListener("click", (e) => {
     setTimeout(() => {
       // e.clientY == the point of click w.r.t the document

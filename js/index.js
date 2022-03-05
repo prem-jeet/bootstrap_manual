@@ -5,12 +5,16 @@ const {
   create_paragraph,
   create_code,
   create_table,
+  copy_button_control,
   append_child,
   run_button_control
 } = require("./functions/functions");
 
+
 let breakpoint_content = require("./card_content/breakpoint_content");
 let gridsystem_content = require("./card_content/gridsystem_content");
+
+
 
 let cards = [];
 
@@ -44,7 +48,7 @@ cards.forEach((e) => {
 
 function insert_card(name, card_header_content, card_body_content) {
   // create a new card
-  let new_card = create_card();
+  let new_card = create_card(card_template);
 
   // get the card header
   let new_card_header = new_card.querySelector("[card-header]");
@@ -66,23 +70,30 @@ function insert_card(name, card_header_content, card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
     if (type == "title") {
-      let new_title = create_title(value);
+
+      let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
     } else if (type == "paragraph") {
-      let new_paragraph = create_paragraph(value);
+      let new_paragraph = create_paragraph(paragraph_template, value);
       append_child(new_card_body, new_paragraph);
     } else if (type == "table") {
-      let new_table = create_table(value);
+      let new_table = create_table(table_template, value);
       append_child(new_card_body, new_table);
     } else if (type == "code") {
-      let new_code = create_code(value);
+
+      let new_code_element = create_code(code_template, value);
+      
+      // adding functionality to copy button
+      let copy_button = new_code_element.querySelector("[copy-button]");
+      copy_button_control(copy_button);
 
       // adding functionality to run button
       let run_button = new_code.querySelector("#runbutton")
       run_button_control(run_button, code_output_area);
-      
-      
-      append_child(new_card_body, new_code);
+            
+      append_child(new_card_body, new_code_element);
+
+
     }
   }
 

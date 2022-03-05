@@ -1,7 +1,35 @@
-
-
 :root {
   --table-background: #f8f9fa;
+}
+
+/* font awesome styles for icons */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-2x {
+  font-size: 2em;
+}
+.fa-clipboard:before {
+  content: "\f0ea";
+}
+.fa-gears:before{
+  content: "\f085";
+}
+.fa-search:before {
+  content: "\f002";
 }
 
 body {
@@ -43,15 +71,10 @@ body {
   flex-wrap: wrap;
 }
 
-
-#outputmodal .alert{
+#outputmodal .alert {
   margin-bottom: 0;
-}
-
-
-[copy-button] {
-  text-transform: uppercase;
-  font-size: 80%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 [card] {
@@ -97,8 +120,19 @@ p code {
 
 .btn-code {
   position: absolute;
-  right: 0;
+  font-size: 110%;
 }
-.btn-code:nth-of-type(2) {
-  bottom: 0;
+[copy-button] {
+  right: 10px;
+  top: 10px;
+}
+[run-button] {
+  right: 10px;
+  bottom: 10px;
+}
+
+@media screen and (max-width:768px) {
+  .btn-code{
+    font-size: 80%;
+  }
 }

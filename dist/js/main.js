@@ -181,22 +181,16 @@ module.exports = {
       // copy the text to the clipboard
       navigator.clipboard.writeText(copied_text);
 
-      // change the button from primary to success
-      element.classList.remove("btn-outline-primary");
+      // change the button from dark to success
+      element.classList.remove("btn-outline-dark");
       element.classList.add("btn-success");
       
 
-      // change the text of copy button from copy to copied
-      element.innerText = "copied";
-
-      // reset the text of copy button from copied to copy after 800ms
+      // reset the button from success to dark
       setTimeout(() => {
-        //rechange the button from success to primary
+        // rechange the button from success to dark
         element.classList.remove("btn-success");
-        element.classList.add("btn-outline-primary");
-
-        // reset the inner text of copy button
-        element.innerText = "copy";
+        element.classList.add("btn-outline-dark");
       }, 800);
     });
   },

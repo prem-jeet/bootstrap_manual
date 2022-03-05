@@ -8,7 +8,7 @@
     "browserify": "browserify js/index.js > dist/js/main.js",
     "clean:dist": "rimraf dist/*",
     "make:dist": "mkdirp dist/style dist/js",
-    "onchange:js" : "onchange 'js/**/*.js' -i -k -d 2000 -v -- npm run browserify",
+    "onchange:js": "onchange 'js/**/*.js' -i -k -d 2000 -v -- npm run browserify",
     "build": "npm run clean:dist && npm run make:dist && npm run onchange:js"
   },
   "repository": {
@@ -26,5 +26,8 @@
     "mkdirp": "^1.0.4",
     "onchange": "^7.1.0",
     "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0"
   }
 }

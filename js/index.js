@@ -11,15 +11,8 @@ const {
 } = require("./functions/functions");
 
 
-let breakpoint_content = require("./card_content/breakpoint_content");
-let gridsystem_content = require("./card_content/gridsystem_content");
-
-
-
-let cards = [];
-
-cards.push(breakpoint_content);
-cards.push(gridsystem_content);
+// fetching content for cards
+let cards = require("./content");
 
 // fetching the main content area where cards will go
 const main_content_area = document.querySelector("#main_content");
@@ -28,6 +21,8 @@ const main_content_area = document.querySelector("#main_content");
 const code_output_area = document.querySelector("#outputmodal [code-output-area]")
 
 
+// fetching search firlds
+let search_box = document.querySelectorAll("input[search]");
 
 
 // fetching templates

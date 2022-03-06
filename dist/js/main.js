@@ -125,6 +125,14 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
+let content = []
+
+content.push(require("./card_content/breakpoint_content"))
+content.push(require("./card_content/gridsystem_content"))
+
+
+module.exports = content;
+},{"./card_content/breakpoint_content":1,"./card_content/gridsystem_content":2}],4:[function(require,module,exports){
 module.exports = {
   // create card
   create_card: function (template) {
@@ -201,7 +209,7 @@ module.exports = {
   },
 };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 // fetching functions
 const {
   create_card,
@@ -215,15 +223,8 @@ const {
 } = require("./functions/functions");
 
 
-let breakpoint_content = require("./card_content/breakpoint_content");
-let gridsystem_content = require("./card_content/gridsystem_content");
-
-
-
-let cards = [];
-
-cards.push(breakpoint_content);
-cards.push(gridsystem_content);
+// fetching content for cards
+let cards = require("./content");
 
 // fetching the main content area where cards will go
 const main_content_area = document.querySelector("#main_content");
@@ -232,6 +233,8 @@ const main_content_area = document.querySelector("#main_content");
 const code_output_area = document.querySelector("#outputmodal [code-output-area]")
 
 
+// fetching search firlds
+let search_box = document.querySelectorAll("input[search]");
 
 
 // fetching templates
@@ -323,4 +326,4 @@ function insert_card(name, card_header_content, card_body_content) {
   append_child(main_content_area, new_card);
 }
 
-},{"./card_content/breakpoint_content":1,"./card_content/gridsystem_content":2,"./functions/functions":3}]},{},[4]);
+},{"./content":3,"./functions/functions":4}]},{},[5]);

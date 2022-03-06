@@ -31,6 +31,12 @@
 .fa-search:before {
   content: "\f002";
 }
+.fa-github-square:before {
+  content: "\f092";
+}
+.fa-linkedin-square:before {
+  content: "\f08c";
+}
 
 body {
   scroll-behavior: smooth;
@@ -135,4 +141,37 @@ p code {
   .btn-code{
     font-size: 80%;
   }
+}
+
+
+
+
+
+/* navbar styles  */
+#wrapper{
+  position: relative;
+}
+aside{
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+  position: fixed;
+}
+
+aside [logo]{
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+
+aside [getting-started-container]{
+  height: 10%;
+}
+[footer] p{
+  font-size: 80%;
+}
+aside [social-logo]{
+  color: #fff;
 }

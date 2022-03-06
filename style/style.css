@@ -1,6 +1,3 @@
-:root {
-  --table-background: #f8f9fa;
-}
 
 /* font awesome styles for icons */
 
@@ -31,20 +28,17 @@
 .fa-search:before {
   content: "\f002";
 }
+.fa-github-square:before {
+  content: "\f092";
+}
+.fa-linkedin-square:before {
+  content: "\f08c";
+}
 
 body {
   scroll-behavior: smooth;
-}
-
-.main-header {
-  background-color: #fb8500;
-}
-
-.main-header div[logo] {
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: floralwhite;
+  min-height: 100vh;
+  position: relative;
 }
 
 .card {
@@ -53,29 +47,41 @@ body {
   align-self: start;
 }
 
-.card-body {
-  max-height: 88vh;
-  overflow-y: auto;
+
+main{
+  padding-bottom: 10vh;
 }
 
-.card-body table {
-  background-color: var(--table-background);
-}
-
-[data-bs-toggle="collapse"] {
+.card-header{
+  height: 8vh;
   cursor: pointer;
 }
 
-#main_content {
-  display: flex;
-  flex-wrap: wrap;
+.card-body {
+  max-height: 83vh;
+  overflow-y: auto;
 }
+
+@media screen and (min-width: 1200px){
+  .card-body {
+    max-height: 90vh;
+  } 
+  main{
+    padding-bottom: 0;
+  }
+}
+
+.card-body table {
+  background-color: #f8f9fa;
+}
+
 
 #outputmodal .alert {
   margin-bottom: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 
 [card] {
   flex: 1;
@@ -104,6 +110,9 @@ body {
   color: #d73038;
 }
 
+
+/* style for code container */
+
 p code {
   background: rgba(135, 131, 120, 0.15);
   border-radius: 3px;
@@ -112,7 +121,7 @@ p code {
   color: #eb5757;
 }
 
-/* style for code container */
+
 .code_container {
   position: relative;
   margin-bottom: 1rem;
@@ -136,3 +145,56 @@ p code {
     font-size: 80%;
   }
 }
+
+
+
+
+
+/* navbar styles  */
+#wrapper{
+  position: relative;
+}
+aside{
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+  position: fixed;
+}
+nav{
+  background-color: #000;
+  color: #fff;
+}
+aside [logo]{
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+nav [logo]{
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+aside [getting-started-container]{
+  height: 10%;
+}
+
+[footer] p{
+  font-size: 80%;
+}
+
+footer p{
+  font-size: 70%;
+}
+
+[social-logo]{
+  color: #fff;
+}
+
+[footer-sm]{
+  position: fixed;
+  bottom: 0;
+  height: 8vh;
+}
+

@@ -83,10 +83,10 @@ main{
 }
 
 
-[card] {
-  flex: 1;
+/* [card] {
+  width: 512px;
   max-width: 512px;
-}
+} */
 
 /* formatting for code elements */
 .highlight {

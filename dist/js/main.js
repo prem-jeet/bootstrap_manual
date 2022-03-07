@@ -125,6 +125,14 @@ module.exports = {
 };
 
 },{}],3:[function(require,module,exports){
+let content = []
+
+content.push(require("./card_content/breakpoint_content"))
+content.push(require("./card_content/gridsystem_content"))
+
+
+module.exports = content;
+},{"./card_content/breakpoint_content":1,"./card_content/gridsystem_content":2}],4:[function(require,module,exports){
 module.exports = {
   // create card
   create_card: function (template) {
@@ -201,7 +209,7 @@ module.exports = {
   },
 };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 // fetching functions
 const {
   create_card,
@@ -211,28 +219,21 @@ const {
   create_table,
   copy_button_control,
   append_child,
-  run_button_control
+  run_button_control,
 } = require("./functions/functions");
 
+// fetching content for cards
+let cards = require("./content");
 
-let breakpoint_content = require("./card_content/breakpoint_content");
-let gridsystem_content = require("./card_content/gridsystem_content");
-
-
-
-let cards = [];
-
-cards.push(breakpoint_content);
-cards.push(gridsystem_content);
-
+// dom element fetching
 // fetching the main content area where cards will go
 const main_content_area = document.querySelector("#main_content");
-
 // fetching the code out put area
-const code_output_area = document.querySelector("#outputmodal [code-output-area]")
-
-
-
+const code_output_area = document.querySelector(
+  "#outputmodal [code-output-area]"
+);
+// fetching search fields
+let search_box = document.querySelectorAll("input[search]");
 
 // fetching templates
 // fetching the card template
@@ -246,10 +247,36 @@ const code_template = document.querySelector("#code_template");
 // fetching table template
 const table_template = document.querySelector("#table_template");
 
+// iterate over the content and add add cards to display
 cards.forEach((e) => {
-  insert_card(e.name, e.content.card_header, e.content.card_body);
+  // extract the newly created card and save
+  e.element = insert_card(e.name, e.content.card_header, e.content.card_body);
 });
 
+// add event listents to the input boxes
+search_box.forEach((item) => {
+  item.addEventListener("input", (e) => {
+    // extract the input and turn into lowercase
+    let value = e.target.value.toLowerCase();
+
+    // iterate over the card
+    cards.forEach((card) => {
+      // extract card text content and turn into lower case
+      let card_content = card.element.textContent.toLowerCase();
+
+      // if the string is in the card then make it visible
+      // else applt display none to it
+      let isVisible = card_content.includes(value);
+      card.element.classList.toggle("d-none", !isVisible);
+    });
+  });
+});
+
+// function inserts card to the display area
+// arguments
+// name of the card for the toggle to work, this name will become the includes
+// card header content
+//  and the card body contents in the format specified in the *_content.js files
 function insert_card(name, card_header_content, card_body_content) {
   // create a new card
   let new_card = create_card(card_template);
@@ -273,8 +300,8 @@ function insert_card(name, card_header_content, card_body_content) {
   for (data in card_body_content) {
     let value = card_body_content[data].content;
     let type = card_body_content[data].type;
-    if (type == "title") {
 
+    if (type == "title") {
       let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
     } else if (type == "paragraph") {
@@ -284,20 +311,17 @@ function insert_card(name, card_header_content, card_body_content) {
       let new_table = create_table(table_template, value);
       append_child(new_card_body, new_table);
     } else if (type == "code") {
-
       let new_code_element = create_code(code_template, value);
-      
+
       // adding functionality to copy button
       let copy_button = new_code_element.querySelector("[copy-button]");
       copy_button_control(copy_button);
 
       // adding functionality to run button
-      let run_button = new_code_element.querySelector("[run-button]")
+      let run_button = new_code_element.querySelector("[run-button]");
       run_button_control(run_button, code_output_area);
-            
+
       append_child(new_card_body, new_code_element);
-
-
     }
   }
 
@@ -321,6 +345,8 @@ function insert_card(name, card_header_content, card_body_content) {
 
   // add the card to the display area
   append_child(main_content_area, new_card);
+
+  return new_card;
 }
 
-},{"./card_content/breakpoint_content":1,"./card_content/gridsystem_content":2,"./functions/functions":3}]},{},[4]);
+},{"./content":3,"./functions/functions":4}]},{},[5]);

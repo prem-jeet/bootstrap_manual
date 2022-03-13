@@ -1,12 +1,17 @@
-
 /* font awesome styles for icons */
 /* *{
   outline: 1px solid lime;
 } */
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-family: "FontAwesome";
+  src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0")
+      format("embedded-opentype"),
+    url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"),
+    url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"),
+    url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"),
+    url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +29,7 @@
 .fa-clipboard:before {
   content: "\f0ea";
 }
-.fa-gears:before{
+.fa-gears:before {
   content: "\f085";
 }
 .fa-search:before {
@@ -41,47 +46,72 @@ body {
   scroll-behavior: smooth;
   min-height: 100vh;
   position: relative;
+
+  background-color: #fce043;
+  background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
+
+  background-size: 400% 400%;
+
+  background-position: 100%;
+
+  animation: background_animation 3s linear;
 }
 
-
-nav{
-  background-color: #cfbaf0;
+@keyframes background_animation {
+  0% {
+    background-position: 100%;
+  }
+  50% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 
-
-.card {
-  flex-basis: 500px;
-  flex-grow: 0;
-  align-self: start;
+nav {
+  background-color: #c77dff;
 }
 
+nav [logo] {
+  /* background-color: #fff; */
+  filter: drop-shadow(1px 1px 2px floralwhite);
+}
 
-.card-header{
+nav [getting-started-button] {
+  border-width: 3px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+nav [search-input-container] {
+  filter: drop-shadow(0px 0px 3px #ff0a54);
+}
+
+main [card] {
+  filter: drop-shadow(2px 2px 2px #3c096c);
+}
+
+.card-header {
   cursor: pointer;
+  background-color: #fae0e4;
+  color: #3c096c;
 }
 
 .card-body {
-  max-height: 85vh;
+  max-height: 88vh;
   overflow-y: auto;
 }
-
 
 .card-body table {
   background-color: #f8f9fa;
 }
-
 
 #outputmodal .alert {
   margin-bottom: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
-
-/* [card] {
-  width: 512px;
-  max-width: 512px;
-} */
 
 /* formatting for code elements */
 .highlight {
@@ -105,7 +135,6 @@ nav{
   color: #d73038;
 }
 
-
 /* style for code container */
 
 p code {
@@ -115,7 +144,6 @@ p code {
   padding: 0.2em 0.4em;
   color: #eb5757;
 }
-
 
 .code_container {
   position: relative;
@@ -135,24 +163,8 @@ p code {
   bottom: 10px;
 }
 
-
-
-
-
-
-@media screen and (min-width: 1200px){
-  .card-body {
-    max-height: 90vh;
-  } 
-  main{
-    padding-bottom: 0;
-  }
-}
-
-
-
-@media screen and (max-width:768px) {
-  .btn-code{
+@media screen and (max-width: 768px) {
+  .btn-code {
     font-size: 80%;
   }
 }

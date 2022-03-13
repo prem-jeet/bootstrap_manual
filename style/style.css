@@ -54,7 +54,7 @@ body {
 
   background-position: 100%;
 
-  animation: background_animation 3s linear;
+  animation: background_animation 5s linear infinite;
 }
 
 @keyframes background_animation {

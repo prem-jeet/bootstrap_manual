@@ -1,6 +1,8 @@
 
 /* font awesome styles for icons */
-
+/* *{
+  outline: 1px solid lime;
+} */
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
@@ -41,6 +43,12 @@ body {
   position: relative;
 }
 
+
+nav{
+  background-color: #cfbaf0;
+}
+
+
 .card {
   flex-basis: 500px;
   flex-grow: 0;
@@ -48,28 +56,15 @@ body {
 }
 
 
-main{
-  padding-bottom: 10vh;
-}
-
 .card-header{
-  height: 8vh;
   cursor: pointer;
 }
 
 .card-body {
-  max-height: 83vh;
+  max-height: 85vh;
   overflow-y: auto;
 }
 
-@media screen and (min-width: 1200px){
-  .card-body {
-    max-height: 90vh;
-  } 
-  main{
-    padding-bottom: 0;
-  }
-}
 
 .card-body table {
   background-color: #f8f9fa;
@@ -140,61 +135,24 @@ p code {
   bottom: 10px;
 }
 
-@media screen and (max-width:768px) {
-  .btn-code{
-    font-size: 80%;
+
+
+
+
+
+@media screen and (min-width: 1200px){
+  .card-body {
+    max-height: 90vh;
+  } 
+  main{
+    padding-bottom: 0;
   }
 }
 
 
 
-
-
-/* navbar styles  */
-#wrapper{
-  position: relative;
+@media screen and (max-width:768px) {
+  .btn-code{
+    font-size: 80%;
+  }
 }
-aside{
-  background-color: #000;
-  color: #fff;
-  height: 100vh;
-  position: fixed;
-}
-nav{
-  background-color: #000;
-  color: #fff;
-}
-aside [logo]{
-  text-transform: uppercase;
-  text-decoration: underline;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-nav [logo]{
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-aside [getting-started-container]{
-  height: 10%;
-}
-
-[footer] p{
-  font-size: 80%;
-}
-
-footer p{
-  font-size: 70%;
-}
-
-[social-logo]{
-  color: #fff;
-}
-
-[footer-sm]{
-  position: fixed;
-  bottom: 0;
-  height: 8vh;
-}
-

@@ -2,7 +2,7 @@
 module.exports = {
   name: "breakpoint",
   content: {
-    card_header: "<h3>Break Points</h3>",
+    card_header: "Break Points",
     card_body: {
       p1: {
         type: "paragraph",
@@ -68,7 +68,7 @@ module.exports = {
 module.exports = {
   name: "gridsystem",
   content: {
-    card_header: "<h3>Grid System</h3>",
+    card_header: "Grid System",
     card_body: {
       p1: {
         type: "paragraph",

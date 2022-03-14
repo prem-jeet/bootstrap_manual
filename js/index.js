@@ -32,6 +32,8 @@ const title_template = document.querySelector("#title_template");
 const subtitle_template = document.querySelector("#subtitle_template");
 // fetching paragraph template
 const paragraph_template = document.querySelector("#paragraph_template");
+// fetching sub text template
+const subtext_template = document.querySelector("#subtext_template");
 // fetching the code container template
 const code_template = document.querySelector("#code_template");
 // fetching table template
@@ -97,6 +99,9 @@ function insert_card(name, card_header_content, card_body_content) {
     }else if (type == "subtitle") {
       let new_subtitle = create_title(subtitle_template, value);
       append_child(new_card_body, new_subtitle);
+    }else if (type == "subtext") {
+      let new_subtext = create_paragraph(subtext_template, value);
+      append_child(new_card_body, new_subtext);
     }
      else if (type == "paragraph") {
       let new_paragraph = create_paragraph(paragraph_template, value);

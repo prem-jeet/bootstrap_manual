@@ -53,7 +53,7 @@ body {
   background-size: 400% 400%;
 
   background-position: 100%;
-
+  
   animation: background_animation 5s linear infinite;
 }
 
@@ -99,7 +99,7 @@ main [card] {
 }
 
 .card-body {
-  max-height: 88vh;
+  max-height: 90vh;
   overflow-y: auto;
 }
 
@@ -136,6 +136,9 @@ main [card] {
 }
 
 /* style for code container */
+[code-display-area]{
+  font-size: 80%;
+}
 
 p code {
   background: rgba(135, 131, 120, 0.15);
@@ -169,19 +172,34 @@ p code {
 }
 
 [code-output-area] .row{
-  motion-path: 10rem;
-  margin: 1rem;
+  min-height: 5rem;
+  margin: 0.5rem 0;
+  align-items: start;
+  background-color: #fefae0;
 }
 
 [code-output-area] .col{
-  border: 1px solid #000;
+  outline: 1px solid #7b2cbf;
+  font-size: 80%;
+  background-color: #e9edc9;
+  --py: 10px; 
+  padding-top: var(--py);
+  padding-bottom: var(--py);
+  
 }
 
+[sub-text]{
+  font-size: 75%;
+}
 
 
 
 @media screen and (max-width: 768px) {
   .btn-code {
     font-size: 80%;
+    
+  }
+  [code-output-area] .col{
+    font-size: 60%;
   }
 }

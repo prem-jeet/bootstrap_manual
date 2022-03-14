@@ -113,7 +113,7 @@
 
     <!-- modal to display the output of code blocks -->
     <div class="modal fade" id="outputmodal">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title">Code Output</h3>
@@ -123,10 +123,8 @@
               data-bs-dismiss="modal"
             ></button>
           </div>
-          <div class="modal-body alert alert-danger">
-            <div class="container-fluid" code-output-area>
-              
-            </div>
+          <div class="modal-body" code-output-area>
+            
           </div>
         </div>
       </div>
@@ -222,6 +220,10 @@
     <!-- paragraph template -->
     <template id="paragraph_template">
       <p></p>
+    </template>
+    <!-- paragraph template -->
+    <template id="subtext_template">
+      <p class="text-muted" sub-text></p>
     </template>
 
     <!-- title template -->

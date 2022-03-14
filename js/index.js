@@ -28,6 +28,8 @@ let search_box = document.querySelectorAll("input[search]");
 const card_template = document.querySelector("#card_template");
 // fetching title template
 const title_template = document.querySelector("#title_template");
+// fetching sub title template
+const subtitle_template = document.querySelector("#subtitle_template");
 // fetching paragraph template
 const paragraph_template = document.querySelector("#paragraph_template");
 // fetching the code container template
@@ -92,7 +94,11 @@ function insert_card(name, card_header_content, card_body_content) {
     if (type == "title") {
       let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
-    } else if (type == "paragraph") {
+    }else if (type == "subtitle") {
+      let new_subtitle = create_title(subtitle_template, value);
+      append_child(new_card_body, new_subtitle);
+    }
+     else if (type == "paragraph") {
       let new_paragraph = create_paragraph(paragraph_template, value);
       append_child(new_card_body, new_paragraph);
     } else if (type == "table") {

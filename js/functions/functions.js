@@ -35,9 +35,12 @@ module.exports = {
 
   // run button control
   run_button_control: (element, output_area) => {
-    let code = element.parentNode.querySelector("[code-display-area]");
-    code = code.textContent;
-    output_area.innerHTML = code;
+    element.addEventListener("click", () => {
+      let code = element.parentNode.querySelector("[code-display-area]");
+      code = code.textContent;
+      console.log(code);
+      output_area.innerHTML = code;
+    })
   },
 
   // copy button logic

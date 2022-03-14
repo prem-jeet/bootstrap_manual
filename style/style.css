@@ -163,6 +163,23 @@ p code {
   bottom: 10px;
 }
 
+/* style for code output area */
+[code-output-area]{
+  padding: 0 0.5rem;
+}
+
+[code-output-area] .row{
+  motion-path: 10rem;
+  margin: 1rem;
+}
+
+[code-output-area] .col{
+  border: 1px solid #000;
+}
+
+
+
+
 @media screen and (max-width: 768px) {
   .btn-code {
     font-size: 80%;

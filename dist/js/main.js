@@ -66,6 +66,74 @@ module.exports = {
 
 },{}],2:[function(require,module,exports){
 module.exports = {
+  name: "column",
+  content: {
+    card_header: "Columns",
+    card_body: {
+      p1: {
+        type: "paragraph",
+        content: `Modify columns with a handful of options for alignment, ordering, and offsetting thanks to our <b><i>flexbox grid system<i></b>.`,
+      },
+      p2: {
+        type: "paragraph",
+        content: `<b><i>Flexbox</i></b> means we have options for changing individual columns and modifying groups of columns at the row level. You choose how columns grow, shrink, or otherwise change.`,
+      },
+      p3: {
+        type: "paragraph",
+        content: `The hierarchy of Bootstrap’s grid goes from container to row to column to your content. On rare occasions, you may combine content and column, but be aware there can be unintended consequences.`,
+      },
+      title1:{
+        type: "title",
+        content: `Alignment`
+      },
+      subtitle1:{
+        type: "subtitle",
+        content: `Vertical alignment`
+      },
+      code1:{
+        type: "code",
+        content: `<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row align-items-start"</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row align-items-center"</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row align-items-end"</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>
+            One of three columns
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre>`
+      }
+    },
+  },
+};
+
+},{}],3:[function(require,module,exports){
+module.exports = {
   name: "gridsystem",
   content: {
     card_header: "Grid System",
@@ -124,15 +192,16 @@ module.exports = {
   },
 };
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 let content = []
 
 content.push(require("./card_content/breakpoint_content"))
 content.push(require("./card_content/gridsystem_content"))
+content.push(require("./card_content/column_content"))
 
 
 module.exports = content;
-},{"./card_content/breakpoint_content":1,"./card_content/gridsystem_content":2}],4:[function(require,module,exports){
+},{"./card_content/breakpoint_content":1,"./card_content/column_content":2,"./card_content/gridsystem_content":3}],5:[function(require,module,exports){
 module.exports = {
   // create card
   create_card: function (template) {
@@ -170,9 +239,12 @@ module.exports = {
 
   // run button control
   run_button_control: (element, output_area) => {
-    let code = element.parentNode.querySelector("[code-display-area]");
-    code = code.textContent;
-    output_area.innerHTML = code;
+    element.addEventListener("click", () => {
+      let code = element.parentNode.querySelector("[code-display-area]");
+      code = code.textContent;
+      console.log(code);
+      output_area.innerHTML = code;
+    })
   },
 
   // copy button logic
@@ -209,7 +281,7 @@ module.exports = {
   },
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 // fetching functions
 const {
   create_card,
@@ -240,6 +312,8 @@ let search_box = document.querySelectorAll("input[search]");
 const card_template = document.querySelector("#card_template");
 // fetching title template
 const title_template = document.querySelector("#title_template");
+// fetching sub title template
+const subtitle_template = document.querySelector("#subtitle_template");
 // fetching paragraph template
 const paragraph_template = document.querySelector("#paragraph_template");
 // fetching the code container template
@@ -304,7 +378,11 @@ function insert_card(name, card_header_content, card_body_content) {
     if (type == "title") {
       let new_title = create_title(title_template, value);
       append_child(new_card_body, new_title);
-    } else if (type == "paragraph") {
+    }else if (type == "subtitle") {
+      let new_subtitle = create_title(subtitle_template, value);
+      append_child(new_card_body, new_subtitle);
+    }
+     else if (type == "paragraph") {
       let new_paragraph = create_paragraph(paragraph_template, value);
       append_child(new_card_body, new_paragraph);
     } else if (type == "table") {
@@ -349,4 +427,4 @@ function insert_card(name, card_header_content, card_body_content) {
   return new_card;
 }
 
-},{"./content":3,"./functions/functions":4}]},{},[5]);
+},{"./content":4,"./functions/functions":5}]},{},[6]);

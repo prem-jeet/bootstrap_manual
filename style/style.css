@@ -99,7 +99,7 @@ main [card] {
 }
 
 .card-body {
-  max-height: 90vh;
+  max-height: 88vh;
   overflow-y: auto;
 }
 
@@ -137,7 +137,7 @@ main [card] {
 
 /* style for code container */
 [code-display-area]{
-  font-size: 80%;
+  font-size: 90%;
 }
 
 p code {
@@ -178,7 +178,7 @@ p code {
   background-color: #fefae0;
 }
 
-/* [code-output-area] .col, */
+
 [code-output-area] .row > *{
   outline: 1px solid #7b2cbf;
   font-size: 80%;
@@ -190,7 +190,7 @@ p code {
 }
 
 [sub-text]{
-  font-size: 75%;
+  font-size: 95%;
 }
 
 
@@ -202,5 +202,12 @@ p code {
   }
   [code-output-area] .col{
     font-size: 60%;
+  }
+}
+
+
+@media screen and (min-width: 768px){
+  [code-display-area]{
+    font-size: 100%;
   }
 }

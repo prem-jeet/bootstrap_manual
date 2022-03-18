@@ -546,15 +546,430 @@ module.exports = {
 
 
 },{}],4:[function(require,module,exports){
+module.exports = {
+  name: "typography",
+  content: {
+    card_header: "Typography",
+    card_body: {
+      title1: {
+        type: "title",
+        content: "Headings",
+      },
+      table1: {
+        type: "table",
+        content: `
+        
+  <thead>
+  <tr>
+    <th>Heading</th>
+    <th>Example</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>
+      <code>&lt;h1&gt;&lt;/h1&gt;</code>
+    </td>
+    <td><span class="h1">h1. Bootstrap heading</span></td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;h2&gt;&lt;/h2&gt;</code>
+    </td>
+    <td><span class="h2">h2. Bootstrap heading</span></td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;h3&gt;&lt;/h3&gt;</code>
+    </td>
+    <td><span class="h3">h3. Bootstrap heading</span></td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;h4&gt;&lt;/h4&gt;</code>
+    </td>
+    <td><span class="h4">h4. Bootstrap heading</span></td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;h5&gt;&lt;/h5&gt;</code>
+    </td>
+    <td><span class="h5">h5. Bootstrap heading</span></td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;h6&gt;&lt;/h6&gt;</code>
+    </td>
+    <td><span class="h6">h6. Bootstrap heading</span></td>
+  </tr>
+</tbody>
+
+        `,
+      },
+      subtext1: {
+        type: "subtext",
+        content: `<code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.`,
+      },
+      code1: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"h1"</span><span class="p">&gt;</span>h1. Bootstrap heading<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"h2"</span><span class="p">&gt;</span>h2. Bootstrap heading<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"h3"</span><span class="p">&gt;</span>h3. Bootstrap heading<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"h4"</span><span class="p">&gt;</span>h4. Bootstrap heading<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"h5"</span><span class="p">&gt;</span>h5. Bootstrap heading<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"h6"</span><span class="p">&gt;</span>h6. Bootstrap heading<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtitle1: {
+        type: "subtitle",
+        content: `Customizing headings`,
+      },
+      subtext2: {
+        type: "subtext",
+        content:
+          "use the <code>.text-muted</code> class to create small secondary heading text",
+      },
+      code2: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>
+  Fancy display heading
+  <span class="p">&lt;</span><span class="nt">small</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-muted"</span><span class="p">&gt;</span>With faded secondary text<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtitle2: {
+        type: "subtitle",
+        content: "Display headings",
+      },
+      subtext3: {
+        type: "subtext",
+        content:
+          "Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a <strong>display heading</strong>—a larger, slightly more opinionated heading style.",
+      },
+      code3: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"display-1"</span><span class="p">&gt;</span>Display 1<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"display-2"</span><span class="p">&gt;</span>Display 2<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"display-3"</span><span class="p">&gt;</span>Display 3<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"display-4"</span><span class="p">&gt;</span>Display 4<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"display-5"</span><span class="p">&gt;</span>Display 5<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"display-6"</span><span class="p">&gt;</span>Display 6<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</code></pre>
+        `,
+      },
+      title2: {
+        type: "title",
+        content: "Lead",
+      },
+      subtext4: {
+        type: "subtext",
+        content: "Make a paragraph stand out by adding <code>.lead</code>.",
+      },
+      code4: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+This is a normal paragraph.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"lead"</span><span class="p">&gt;</span>
+  This is a lead paragraph. It stands out from regular paragraphs.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      title3: {
+        type: "title",
+        content: "Inline text elements",
+      },
+      subtext5: {
+        type: "subtext",
+        content: "Styling for common inline HTML5 elements.",
+      },
+      code5: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>You can use the mark tag to <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>highlight<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span> text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">del</span><span class="p">&gt;</span>This line of text is meant to be treated as deleted text.<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">s</span><span class="p">&gt;</span>This line of text is meant to be treated as no longer accurate.<span class="p">&lt;/</span><span class="nt">s</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">ins</span><span class="p">&gt;</span>This line of text is meant to be treated as an addition to the document.<span class="p">&lt;/</span><span class="nt">ins</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">u</span><span class="p">&gt;</span>This line of text will render as underlined.<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">small</span><span class="p">&gt;</span>This line of text is meant to be treated as fine print.<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>This line rendered as bold text.<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>This line rendered as italicized text.<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtext6: {
+        type: "subtext",
+        content: "Beware that those tags should be used for semantic purpose:",
+      },
+      subtext7: {
+        type: "subtext",
+        content: `
+        <ul>
+<li><code>&lt;mark&gt;</code> represents text which is marked or highlighted for reference or notation purposes.</li>
+<li><code>&lt;small&gt;</code> represents side-comments and small print, like copyright and legal text.</li>
+<li><code>&lt;s&gt;</code> represents element that are no longer relevant or no longer accurate.</li>
+<li><code>&lt;u&gt;</code> represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation.</li>
+</ul>
+        `,
+      },
+      subtext8: {
+        type: "subtext",
+        content:
+          "If you want to style your text, you should use the following classes instead:",
+      },
+      subtext9: {
+        type: "subtext",
+        content: `
+        <ul>
+<li><code>.mark</code> will apply the same styles as <code>&lt;mark&gt;</code>.</li>
+<li><code>.small</code> will apply the same styles as <code>&lt;small&gt;</code>.</li>
+<li><code>.text-decoration-underline</code> will apply the same styles as <code>&lt;u&gt;</code>.</li>
+<li><code>.text-decoration-line-through</code> will apply the same styles as <code>&lt;s&gt;</code>.</li>
+</ul>
+        `,
+      },
+      title4: {
+        type: "title",
+        content: "Text Utility",
+      },
+      par1: {
+        type: "paragraph",
+        content:
+          "common text utilities to control alignment, wrapping, weight, and more.",
+      },
+      subtitle3: {
+        type: "subtitle",
+        content: "Text alignment",
+      },
+      subtex10: {
+        type: "subtext",
+        content:
+          "Easily realign text to components with text alignment classes. For start, end, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.",
+      },
+      code6: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-start"</span><span class="p">&gt;</span>Start aligned text on all viewport sizes.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-center"</span><span class="p">&gt;</span>Center aligned text on all viewport sizes.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-end"</span><span class="p">&gt;</span>End aligned text on all viewport sizes.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-sm-center"</span><span class="p">&gt;</span>Start aligned text on viewports sized SM (small) or wider.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-md-center"</span><span class="p">&gt;</span>Start aligned text on viewports sized MD (medium) or wider.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-lg-center"</span><span class="p">&gt;</span>Start aligned text on viewports sized LG (large) or wider.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-xl-center"</span><span class="p">&gt;</span>Start aligned text on viewports sized XL (extra-large) or wider.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtitle4: {
+        type: "subtitle",
+        content: "Text wrapping and overflow",
+      },
+      subtext11: {
+        type: "subtext",
+        content: `Wrap text with a <code>.text-wrap</code> class. Prevent text from wrapping with a <code>.text-nowrap</code> class.`,
+      },
+      code7: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"badge bg-primary text-wrap"</span> <span class="na">style</span><span class="o">=</span><span class="s">"width: 6rem;"</span><span class="p">&gt;</span>
+  This text should wrap.
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-nowrap bg-info mt-2"</span> <span class="na">style</span><span class="o">=</span><span class="s">"width: 8rem;"</span><span class="p">&gt;</span>
+  This text should overflow the parent.
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre>
+
+        `,
+      },
+      subtitle5: {
+        type: "subtitle",
+        content: "Text transform",
+      },
+      subtext12: {
+        type: "subtext",
+        content:
+          "Transform text in components with text capitalization classes.",
+      },
+      code8: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-lowercase"</span><span class="p">&gt;</span>Lowercased text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-uppercase"</span><span class="p">&gt;</span>Uppercased text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-capitalize"</span><span class="p">&gt;</span>capitalized text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtitle6: {
+        type: "subtitle",
+        content: "Font size",
+      },
+      subtext13: {
+        type: "subtext",
+        content:
+          "Quickly change the font-size of text. While the heading classes <code>.h1-.h6</code> apply <code>font-size</code>, <code>font-weight</code>, and <code>line-height</code>, these utilities only apply <code>font-size</code>. Sizing for these utilities matches HTML’s heading elements, so as the number increases, their size decreases.",
+      },
+      code9: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fs-1"</span><span class="p">&gt;</span>.fs-1 text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fs-2"</span><span class="p">&gt;</span>.fs-2 text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fs-3"</span><span class="p">&gt;</span>.fs-3 text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fs-4"</span><span class="p">&gt;</span>.fs-4 text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fs-5"</span><span class="p">&gt;</span>.fs-5 text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fs-6"</span><span class="p">&gt;</span>.fs-6 text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtitle7: {
+        type: "subtitle",
+        content: "Font weight and italics",
+      },
+      subtext14: {
+        type: "subtext",
+        content:
+          "Quickly change the <code>font-weight</code> or <code>font-style</code> of text with these utilities. <code>font-style</code> utilities are abbreviated as <code>.fst-*</code> and <code>font-weight</code> utilities are abbreviated as <code>.fw-*</code>.",
+      },
+      code10: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fw-bold"</span><span class="p">&gt;</span>Bold text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fw-bolder"</span><span class="p">&gt;</span>Bolder weight text (relative to the parent element).<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fw-normal"</span><span class="p">&gt;</span>Normal weight text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fw-light"</span><span class="p">&gt;</span>Light weight text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fw-lighter"</span><span class="p">&gt;</span>Lighter weight text (relative to the parent element).<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fst-italic"</span><span class="p">&gt;</span>Italic text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fst-normal"</span><span class="p">&gt;</span>Text with normal font style<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtitle8: {
+        type: "subtitle",
+        content: "Colors",
+      },
+      subtext15: {
+        type: "subtext",
+        content:
+          "Colorize text with color utilities. If you want to colorize links, you can use the<code>.link-*</code> helper classes</a> which have <code>:hover</code> and <code>:focus</code> states.",
+      },
+      code11: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-primary"</span><span class="p">&gt;</span>.text-primary<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-secondary"</span><span class="p">&gt;</span>.text-secondary<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-success"</span><span class="p">&gt;</span>.text-success<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-danger"</span><span class="p">&gt;</span>.text-danger<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-warning bg-dark"</span><span class="p">&gt;</span>.text-warning<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-info bg-dark"</span><span class="p">&gt;</span>.text-info<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-light bg-dark"</span><span class="p">&gt;</span>.text-light<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-dark"</span><span class="p">&gt;</span>.text-dark<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-body"</span><span class="p">&gt;</span>.text-body<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-muted"</span><span class="p">&gt;</span>.text-muted<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-white bg-dark"</span><span class="p">&gt;</span>.text-white<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-black-50"</span><span class="p">&gt;</span>.text-black-50<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-white-50 bg-dark"</span><span class="p">&gt;</span>.text-white-50<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      title5: {
+        type: "title",
+        content: "Blockquotes",
+      },
+      subtext16: {
+        type: "subtext",
+        content: `For quoting blocks of content from another source within your document. Wrap <code>&lt;blockquote class="blockquote"&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.`,
+      },
+      code12: {
+        type: "code",
+        content: `<pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">class</span><span class="o">=</span><span class="s">"blockquote"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>A well-known quote, contained in a blockquote element.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span></code></pre>`,
+      },
+      subtitle9: {
+        type: "subtitle",
+        content: "Naming a source",
+      },
+      subtext17: {
+        type: "subtext",
+        content: `The HTML spec requires that blockquote attribution be placed outside the <code>&lt;blockquote&gt;</code>. When providing attribution, wrap your <code>&lt;blockquote&gt;</code> in a <code>&lt;figure&gt;</code> and use a <code>&lt;figcaption&gt;</code> or a block level element (e.g., <code>&lt;p&gt;</code>) with the <code>.blockquote-footer</code> class. Be sure to wrap the name of the source work in <code>&lt;cite&gt;</code> as well.
+        <br>Use text utilities <code>.text-center</code>, <code>.text-end</code> as needed to change the alignment of your blockquote.`,
+      },
+      code13: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-center"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">class</span><span class="o">=</span><span class="s">"blockquote"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>A well-known quote, contained in a blockquote element.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">figcaption</span> <span class="na">class</span><span class="o">=</span><span class="s">"blockquote-footer"</span><span class="p">&gt;</span>
+    Someone famous in <span class="p">&lt;</span><span class="nt">cite</span> <span class="na">title</span><span class="o">=</span><span class="s">"Source Title"</span><span class="p">&gt;</span>Source Title<span class="p">&lt;/</span><span class="nt">cite</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      title6: {
+        type: "title",
+        content: "Lists",
+      },
+      subtitle10: {
+        type: "subtitle",
+        content: "Unstyled",
+      },
+      subtext18: {
+        type: "subtext",
+        content:
+          "Remove the default <code>list-style</code> and left margin on list items (immediate children only). <strong>This only applies to immediate children list items</strong>, meaning you will need to add the class for any nested lists as well.",
+      },
+      code14: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">"list-unstyled"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>This is a list.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>It appears completely unstyled.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Structurally, it's still a list.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>However, this style only applies to immediate child elements.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Nested lists:
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>are unaffected by this style<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>will still show a bullet<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>and have appropriate left margin<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>This may still come in handy in some situations.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+      subtitle11: {
+        type: "subtitle",
+        content: "Inline",
+      },
+      subtext19: {
+        type: "subtext",
+        content:
+          "Remove a list’s bullets and apply some light <code>margin</code> with a combination of two classes, <code>.list-inline</code> and <code>.list-inline-item</code>.",
+      },
+      code15: {
+        type: "code",
+        content: `
+        <pre><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">"list-inline"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">"list-inline-item"</span><span class="p">&gt;</span>This is a list item.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">"list-inline-item"</span><span class="p">&gt;</span>And another one.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">"list-inline-item"</span><span class="p">&gt;</span>But they're displayed inline.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></pre>
+        `,
+      },
+    },
+  },
+};
+
+},{}],5:[function(require,module,exports){
 let content = []
 
 content.push(require("./card_content/breakpoint_content"))
 content.push(require("./card_content/gridsystem_content"))
 content.push(require("./card_content/column_content"))
+content.push(require("./card_content/typography_content"))
+
 
 
 module.exports = content;
-},{"./card_content/breakpoint_content":1,"./card_content/column_content":2,"./card_content/gridsystem_content":3}],5:[function(require,module,exports){
+},{"./card_content/breakpoint_content":1,"./card_content/column_content":2,"./card_content/gridsystem_content":3,"./card_content/typography_content":4}],6:[function(require,module,exports){
 module.exports = {
   // create card
   create_card: function (template) {
@@ -634,7 +1049,7 @@ module.exports = {
   },
 };
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 // fetching functions
 const {
   create_card,
@@ -785,4 +1200,4 @@ function insert_card(name, card_header_content, card_body_content) {
   return new_card;
 }
 
-},{"./content":4,"./functions/functions":5}]},{},[6]);
+},{"./content":5,"./functions/functions":6}]},{},[7]);

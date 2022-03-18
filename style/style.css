@@ -53,7 +53,7 @@ body {
   background-size: 400% 400%;
 
   background-position: 100%;
-  
+
   animation: background_animation 5s linear infinite;
 }
 
@@ -107,12 +107,6 @@ main [card] {
   background-color: #f8f9fa;
 }
 
-#outputmodal .alert {
-  margin-bottom: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 /* formatting for code elements */
 .highlight {
   background-color: #f8f9fa;
@@ -136,8 +130,8 @@ main [card] {
 }
 
 /* style for code container */
-[code-display-area]{
-  font-size: 90%;
+[code-display-area] {
+  font-size: 80%;
 }
 
 p code {
@@ -167,47 +161,46 @@ p code {
 }
 
 /* style for code output area */
-[code-output-area]{
-  padding: 0 0.5rem;
+[code-output-area] {
+  padding: 1rem;
 }
 
-[code-output-area] .row{
+[code-output-area] .row {
   min-height: 10rem;
   margin: 0.5rem 0;
   align-items: start;
   background-color: #fefae0;
 }
 
-
-[code-output-area] .row > *{
+[code-output-area] .row > * {
   outline: 1px solid #7b2cbf;
   font-size: 80%;
   background-color: #e9edc9;
-  --py: 10px; 
+  --py: 10px;
   padding-top: var(--py);
   padding-bottom: var(--py);
-  
 }
 
-[sub-text]{
-  font-size: 95%;
+[sub-text],
+table {
+  font-size: 90%;
 }
 
-
+#outputmodal .modal-header {
+  background-color: #e0aaff;
+}
 
 @media screen and (max-width: 768px) {
   .btn-code {
     font-size: 80%;
-    
   }
-  [code-output-area] .col{
+  [code-output-area] .col {
     font-size: 60%;
   }
 }
 
-
-@media screen and (min-width: 768px){
-  [code-display-area]{
+@media screen and (min-width: 768px) {
+  [code-display-area] {
     font-size: 100%;
   }
 }
